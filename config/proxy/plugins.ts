@@ -13,6 +13,9 @@ const plugins: Plugin<Request, Response>[] = [
     };
     options.selfHandleResponse = true;
     proxyServer.on('proxyRes', responseInterceptor(async (responseBuffer, proxyRes, req, res) => {
+      if(proxyRes.statusCode !== 200){
+        return responseBuffer;
+      }
       // Remove incorrect cache-control headers
       res.removeHeader('expires');
       res.removeHeader('cache-control');
