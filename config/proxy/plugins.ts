@@ -7,10 +7,6 @@ const plugins: Plugin<Request, Response>[] = [
     options.pathRewrite = {
       '^/': '', // remove slash
     };
-    options.headers = {
-      ...options.headers,
-      'Accept': 'application/ld+json'
-    };
     options.selfHandleResponse = true;
     proxyServer.on('proxyRes', responseInterceptor(async (responseBuffer, proxyRes, req, res) => {
       if(proxyRes.statusCode !== 200){
