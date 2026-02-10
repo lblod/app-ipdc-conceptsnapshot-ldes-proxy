@@ -1,0 +1,7 @@
+services:
+  proxy:
+    image: lblod/api-proxy-service:feature-plugin-support
+    environment:
+      API_URL: "<IPDC ConceptSnapshot LDES feed endpoint>"
+    volumes:
+      - ./config/proxy/:/config/
